@@ -1,7 +1,11 @@
 name: Hello
 on: push
 jobs:
-  hello:
+  environment-check:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hellow World"
+      - run: date
+      - run: uname -a
+      - run: ps -fe
+      - run: apt-get list
