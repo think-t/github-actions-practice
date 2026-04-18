@@ -1,10 +1,17 @@
-name: Hello
-on: push
+name: Manual Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      greeting:
+        type: string
+        default: Hello
+        required: false
+        description: A cheerful word
 jobs:
   environment-check:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hellow World"
+      - run: echo "${{ inputs.greeting }}"
       - run: date
       - run: uname -a
       - run: ps -fe
