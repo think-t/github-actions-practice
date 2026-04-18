@@ -10,9 +10,14 @@ on:
 jobs:
   environment-check:
     runs-on: ubuntu-latest
+    env:
+      BRANCH: main
     steps:
       - run: echo "${{ inputs.greeting }}"
       - run: date
       - run: uname -a
       - run: ps -fe
       - run: apt list --installed
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
